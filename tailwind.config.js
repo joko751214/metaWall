@@ -18,8 +18,9 @@ module.exports = {
         },
       },
       fontFamily: {
-        primary: 'Noto Sans TC',
-        secondary: 'Azeret Mono',
+        primary: `'Noto Sans TC', sans-serif`,
+        secondary: `'Azeret Mono', monospace`,
+        special: `'Paytone One', sans-serif`,
       },
     },
   },
