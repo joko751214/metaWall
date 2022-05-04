@@ -10,7 +10,14 @@ const routes = [
     name: 'index',
     title: '首頁',
     component: () => import('@/pages/Home.vue'),
-    children: [],
+    children: [
+      {
+        path: '/',
+        name: 'posts',
+        title: '全體動態牆',
+        component: () => import('@/pages/Posts.vue'),
+      },
+    ],
   },
 ];
 
