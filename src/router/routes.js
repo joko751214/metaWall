@@ -17,6 +17,12 @@ const routes = [
         title: '全體動態牆',
         component: () => import('@/pages/Posts.vue'),
       },
+      {
+        path: '/posts-new',
+        name: 'posts-new',
+        title: '張貼動態',
+        component: () => import('@/pages/PostsNew.vue'),
+      },
     ],
   },
 ];

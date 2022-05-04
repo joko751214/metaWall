@@ -12,7 +12,12 @@
     <div class="flex justify-center my-12">
       <router-view />
       <div class="w-1/5 px-6 py-8 bg-white border-2 border-black self-start">
-        <button class="button-style button-shadow mb-6">張貼動態</button>
+        <router-link
+          :to="{ name: 'posts-new' }"
+          class="button-style button-shadow mb-6 block text-center"
+        >
+          張貼動態
+        </router-link>
         <ul class="px-2">
           <li class="flex items-center mb-6">
             <img class="mr-4" src="@/assets/user.png" alt="user-image" />
