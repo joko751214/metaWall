@@ -22,6 +22,12 @@ module.exports = {
         secondary: `'Azeret Mono', monospace`,
         special: `'Paytone One', sans-serif`,
       },
+      width: {
+        12.5: '50px',
+      },
+      height: {
+        12.5: '50px',
+      },
     },
   },
   plugins: [],
