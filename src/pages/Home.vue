@@ -1,17 +1,17 @@
 <template>
   <div>
     <header
-      class="flex justify-around items-center bg-white border-b-2 border-black bottom-shadow py-3"
+      class="flex justify-center items-center bg-white border-b-2 border-black bottom-shadow py-3"
     >
-      <p class="font-special text-2xl">MetaWall</p>
-      <div class="flex items-center">
+      <p class="font-special text-2xl w-2/5">MetaWall</p>
+      <div class="flex justify-end items-center w-1/5">
         <img class="w-8 mr-2.5" src="@/assets/user.png" alt="user-image" />
         <span href="#" class="border-b border-black font-secondary font-bold px-1">Member</span>
       </div>
     </header>
-    <div class="container mx-auto my-12 grid grid-cols-3 gap-6">
-      <router-view class="col-span-2" />
-      <div class="px-6 py-8 bg-white border-2 border-black">
+    <div class="flex justify-center my-12">
+      <router-view />
+      <div class="w-1/5 px-6 py-8 bg-white border-2 border-black self-start">
         <button class="button-style button-shadow mb-6">張貼動態</button>
         <ul class="px-2">
           <li class="flex items-center mb-6">
@@ -25,7 +25,7 @@
               <font-awesome-icon :icon="['far', 'bell']" class="text-xl" />
             </div>
             <!-- <font-awesome-icon icon="fa-solid fa-user-secret" /> -->
-            <p class="font-primary font-bold">邊緣小杰</p>
+            <p class="font-primary font-bold">追蹤名單</p>
           </li>
           <li class="flex items-center">
             <div
