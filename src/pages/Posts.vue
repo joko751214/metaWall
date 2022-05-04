@@ -14,46 +14,58 @@
         <font-awesome-icon :icon="['fa', 'magnifying-glass']" class="text-xl text-white" />
       </div>
     </div>
-    <ul
-      class="border-2 border-black bg-white rounded-lg p-6 bottom-shadow mb-4"
-      v-for="item in data"
-    >
-      <li class="flex items-center mb-4">
-        <img class="mr-4" :src="item.userUrl" alt="user-image" />
-        <div>
-          <p class="font-primary font-bold">{{ item.userName }}</p>
-          <span class="text-xs text-gray-400">{{ item.createAt }}</span>
-        </div>
-      </li>
-      <li class="mb-4">
-        <p v-html="item.note"></p>
-      </li>
-      <li v-if="item.imageUrl"><img class="w-full" :src="item.imageUrl" alt="photo-image" /></li>
-    </ul>
+    <template v-if="data.length > 0">
+      <ul
+        class="border-2 border-black bg-white rounded-lg p-6 bottom-shadow mb-4"
+        v-for="item in data"
+      >
+        <li class="flex items-center mb-4">
+          <img class="mr-4" :src="item.userUrl" alt="user-image" />
+          <div>
+            <p class="font-primary font-bold">{{ item.userName }}</p>
+            <span class="text-xs text-gray-400">{{ item.createAt }}</span>
+          </div>
+        </li>
+        <li class="mb-4">
+          <p v-html="item.note"></p>
+        </li>
+        <li v-if="item.imageUrl"><img class="w-full" :src="item.imageUrl" alt="photo-image" /></li>
+      </ul>
+    </template>
+    <template v-else>
+      <ul class="border-2 border-black bg-white rounded-lg bottom-shadow">
+        <li class="py-4 border-b-2 border-black px-4 flex">
+          <div class="w-2.5 h-2.5 rounded-full bg-[#DE4B63] mr-1.5"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-[#FAA722] mr-1.5"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-[#83C51D]"></div>
+        </li>
+        <li class="text-gray-400 text-center py-8">目前尚無動態，新增一則貼文吧！</li>
+      </ul>
+    </template>
   </div>
 </template>
 
 <script setup>
 const data = [
-  {
-    userUrl: 'src/assets/user.png',
-    userName: '邊緣小杰',
-    createAt: '2022/1/10 12:00',
-    note: '外面看起來就超冷....<br> 我決定回被窩繼續睡....>.<',
-    imageUrl: 'src/assets/photo-image.png',
-  },
-  {
-    userUrl: 'src/assets/user.png',
-    userName: '波吉',
-    createAt: '2022/1/10 12:00',
-    note: '我一定要成為很棒棒的國王！',
-  },
-  {
-    userUrl: 'src/assets/user.png',
-    userName: '阿爾敏',
-    createAt: '2022/1/10 12:00',
-    note: '各位我有一個作戰計畫',
-  },
+  // {
+  //   userUrl: 'src/assets/user.png',
+  //   userName: '邊緣小杰',
+  //   createAt: '2022/1/10 12:00',
+  //   note: '外面看起來就超冷....<br> 我決定回被窩繼續睡....>.<',
+  //   imageUrl: 'src/assets/photo-image.png',
+  // },
+  // {
+  //   userUrl: 'src/assets/user.png',
+  //   userName: '波吉',
+  //   createAt: '2022/1/10 12:00',
+  //   note: '我一定要成為很棒棒的國王！',
+  // },
+  // {
+  //   userUrl: 'src/assets/user.png',
+  //   userName: '阿爾敏',
+  //   createAt: '2022/1/10 12:00',
+  //   note: '各位我有一個作戰計畫',
+  // },
 ];
 </script>
 
