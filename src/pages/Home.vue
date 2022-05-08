@@ -53,7 +53,6 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
 import useStore from '@/store';
 
 const { user } = useStore();
@@ -62,5 +61,5 @@ const getUsersData = async () => {
   await user.getUsersData();
 };
 
-await getUsersData();
+getUsersData();
 </script>
