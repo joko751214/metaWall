@@ -3,7 +3,9 @@
     <header
       class="flex justify-center items-center bg-white border-b-2 border-black bottom-shadow py-3"
     >
-      <p class="font-special text-2xl w-2/5">MetaWall</p>
+      <div class="font-special text-2xl w-2/5">
+        <router-link to="/">MetaWall</router-link>
+      </div>
       <div class="flex justify-end items-center w-1/5">
         <img class="w-8 mr-2.5" src="@/assets/user.png" alt="user-image" />
         <span href="#" class="border-b border-black font-secondary font-bold px-1">Member</span>
@@ -20,8 +22,12 @@
         </router-link>
         <ul class="px-2">
           <li class="flex items-center mb-6">
-            <img class="mr-4" src="@/assets/user.png" alt="user-image" />
-            <p class="font-primary font-bold">邊緣小杰</p>
+            <img
+              class="mr-4 w-12.5 h-12.5 rounded-full border-2 border-black"
+              :src="user.photo"
+              alt="user-image"
+            />
+            <p class="font-primary font-bold">{{ user.name }}</p>
           </li>
           <li class="flex items-center mb-6">
             <div
@@ -46,6 +52,15 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import useStore from '@/store';
 
-<style></style>
+const { user } = useStore();
+
+const getUsersData = async () => {
+  await user.getUsersData();
+};
+
+await getUsersData();
+</script>
