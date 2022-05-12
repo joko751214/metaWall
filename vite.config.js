@@ -13,6 +13,7 @@ export default ({ mode }) => {
         '@': path.resolve(__dirname, 'src'),
       },
     },
+    base: '/metaWall/',
     plugins: [vue()],
     // 本地反向代理，解決瀏覽器跨域限制
     server: {
@@ -21,7 +22,7 @@ export default ({ mode }) => {
       open: true, // 運行自動打開瀏覽器
       proxy: {
         [env.VITE_APP_BASE_API]: {
-          target: 'http://localhost:3000',
+          target: 'https://stormy-shelf-62914.herokuapp.com',
           changeOrigin: true,
           rewrite: (path) => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), ''),
         },

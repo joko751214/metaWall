@@ -5,18 +5,18 @@ let loadingRequestCount = 0;
 let loadingInstance;
 
 const showLoading = (target) => {
-  console.log(target, 'target');
   if (loadingRequestCount === 0) {
-    loadingInstance = ElLoading.service({ target });
+    loadingInstance = ElLoading.service({
+      text: 'Loading...',
+      background: 'rgba(255, 255, 255, 0.7)',
+    });
   }
   loadingRequestCount++;
-  console.log(loadingRequestCount, 'loadingRequestCount++');
 };
 
 const hideLoading = () => {
   if (loadingRequestCount <= 0) return;
   loadingRequestCount--;
-  console.log(loadingRequestCount, 'loadingRequestCount--');
   if (loadingRequestCount === 0) {
     loadingInstance.close();
   }
