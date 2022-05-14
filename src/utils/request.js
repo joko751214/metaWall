@@ -3,7 +3,7 @@ import { showLoading, hideLoading } from '@/utils/loading';
 
 const env = import.meta.env;
 
-const baseURL = env.VITE_APP_BASE_API;
+const baseURL = '/api';
 
 const service = axios.create({
   baseURL,

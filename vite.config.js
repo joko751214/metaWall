@@ -17,14 +17,12 @@ export default ({ mode }) => {
     plugins: [vue()],
     // 本地反向代理，解決瀏覽器跨域限制
     server: {
-      host: 'localhost',
-      port: Number(env.VITE_APP_PORT),
       open: true, // 運行自動打開瀏覽器
       proxy: {
-        [env.VITE_APP_BASE_API]: {
-          target: 'https://stormy-shelf-62914.herokuapp.com',
+        '/api': {
+          target: 'https://stormy-shelf-62914.herokuapp.com/',
           changeOrigin: true,
-          rewrite: (path) => path.replace(new RegExp('^' + env.VITE_APP_BASE_API), ''),
+          rewrite: (path) => path.replace(new RegExp('^' + '/api'), ''),
         },
       },
     },
