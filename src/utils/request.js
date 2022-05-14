@@ -3,7 +3,7 @@ import { showLoading, hideLoading } from '@/utils/loading';
 
 const env = import.meta.env;
 
-const baseURL = '/api';
+const baseURL = 'https://stormy-shelf-62914.herokuapp.com/';
 
 const service = axios.create({
   baseURL,
