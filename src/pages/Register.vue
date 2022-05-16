@@ -13,8 +13,12 @@
             type="text"
             placeholder="暱稱"
             v-model="form.name"
+            @blur="v$.name.$touch"
           />
-          <div v-if="v$.name.$error">暱稱至少 2 個字元以上</div>
+          <div v-if="v$.name.$errors.length > 0" class="font-secondary text-[#F57375]">
+            {{ v$.name.$errors[0].$message }}
+          </div>
+          <!-- <div v-if="v$.name.minLength.$invalid">暱稱至少 2 個字元以上</div> -->
         </li>
         <li class="mb-4 w-full">
           <input
@@ -22,7 +26,11 @@
             type="text"
             placeholder="Email"
             v-model="form.email"
+            @blur="v$.email.$touch"
           />
+          <div v-if="v$.email.$errors.length > 0" class="font-secondary text-[#F57375]">
+            {{ v$.email.$errors[0].$message }}
+          </div>
         </li>
         <li class="mb-8 w-full">
           <input
@@ -30,10 +38,14 @@
             type="text"
             placeholder="Password"
             v-model="form.password"
+            @blur="v$.password.$touch"
           />
+          <div v-if="v$.password.$errors.length > 0" class="font-secondary text-[#F57375]">
+            {{ v$.password.$errors[0].$message }}
+          </div>
         </li>
         <li class="mb-4 w-full">
-          <button class="button-style button-shadow">註冊</button>
+          <button class="button-style button-shadow" @click="register">註冊</button>
         </li>
         <li>
           <p>登入</p>
@@ -45,7 +57,7 @@
 
 <script setup>
 import useVuelidate from '@vuelidate/core';
-import { required, minLength } from '@vuelidate/validators';
+import { required, minLength, email, helpers, alphaNum } from '@vuelidate/validators';
 import { ref, computed } from 'vue';
 
 const form = ref({
@@ -53,15 +65,32 @@ const form = ref({
   email: '',
   password: '',
 });
-const requiredNameLength = ref(2);
+
 const rules = computed(() => ({
   name: {
-    required,
-    minLength: minLength(requiredNameLength.value),
+    required: helpers.withMessage('暱稱必填', required),
+    minLength: helpers.withMessage('暱稱至少 2 個字元以上', minLength(2)),
+  },
+  email: {
+    required: helpers.withMessage('email 必填', required),
+    email: helpers.withMessage('email 格式錯誤', email),
+  },
+  password: {
+    required: helpers.withMessage('密碼必填', required),
+    alphaNum: helpers.withMessage(
+      '密碼需至少 8 碼以上，並英數混合',
+      helpers.regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, /\d/)
+    ),
   },
 }));
 
-const v$ = useVuelidate(rules, { form });
+const v$ = useVuelidate(rules, form.value);
+const register = async () => {
+  const valid = await v$.value.$validate();
+  if (valid) {
+    console.log(form.value, 'valid');
+  }
+};
 </script>
 
 <style lang="sass">
